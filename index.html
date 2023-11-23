@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <div class="container"></div>
+
+    <script>
+        fetch('/data/data.json')
+        .then(res => res.json())
+        .then(data => {
+            const h3 = document.createElement('h3')
+            h3.innerText = 'FROM /data/data.json'
+            document.querySelector('.container').appendChild(h3)
+            data.map(x => {
+                const p = document.createElement('p')
+                p.innerText = x.test
+                document.querySelector('.container').appendChild(p)
+            })
+            document.querySelector('.container').appendChild(document.createElement('br'))
+            document.querySelector('.container').appendChild(document.createElement('hr'))
+            document.querySelector('.container').appendChild(document.createElement('br'))
+        })
+
+        fetch('/public/data/data.json')
+        .then(res => res.json())
+        .then(data => {
+            const h3 = document.createElement('h3')
+            h3.innerText = 'FROM /public/data/data.json'
+            document.querySelector('.container').appendChild(h3)
+            data.map(x => {
+                const p = document.createElement('p')
+                p.innerText = x.test
+                document.querySelector('.container').appendChild(p)
+            })
+        })
+    </script>
+</body>
+</html>
